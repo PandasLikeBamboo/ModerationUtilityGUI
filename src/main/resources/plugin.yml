@@ -1,0 +1,10 @@
+name: ModerationUtilityGUI
+version: '${project.version}'
+main: me.dark.merchant.moderationcommandsgui.ModerationCommandsGUI
+api-version: 1.18
+authors: [ DarkMerchant ]
+description: Cool looking and easy to use GUI for administration utility
+website: https://www.youtube.com/channel/UCq_2JkllnYwhomahhovizIg
+commands:
+  mcg:
+    description: Opens main menu
