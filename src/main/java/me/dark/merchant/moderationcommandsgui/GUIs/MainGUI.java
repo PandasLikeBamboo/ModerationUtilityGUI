@@ -10,7 +10,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.Merchant;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
@@ -61,7 +60,9 @@ public class MainGUI implements CommandExecutor {
             totemMeta.addEnchant(Enchantment.MENDING, 1, true);
         } else if (p.getAllowFlight()) {
             fthMeta.addEnchant(Enchantment.MENDING, 1, true);
-        } //todo if statement for vanish glint
+        }
+
+
 
         totem.setItemMeta(totemMeta);
         feather.setItemMeta(fthMeta);
