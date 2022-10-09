@@ -33,6 +33,7 @@ public class MainListener implements Listener {
 
 
 
+
         if (e.getView().getTitle().equalsIgnoreCase(ChatColor.DARK_RED + "Main Menu")) {
 
 
@@ -68,18 +69,23 @@ public class MainListener implements Listener {
                     break;
                 case GHAST_TEAR:
                     if(plugin.invList.contains(p)){
+
+                        for(Player people1 : Bukkit.getOnlinePlayers()){
+                            people1.showPlayer(plugin, p);
+                        }
                         plugin.invList.remove(p);
                         p.sendMessage(ChatColor.RED + "Vanish off");
-                        Bukkit.broadcastMessage(ChatColor.GOLD + name + " joined the game");
+                        Bukkit.broadcastMessage(ChatColor.YELLOW + name + " joined the game");
+
 
                     } else if(!plugin.invList.contains(p)){
 
-                        for(Player people : Bukkit.getOnlinePlayers()){
-                            people.hidePlayer(plugin, p);
+                        for(Player people2 : Bukkit.getOnlinePlayers()){
+                            people2.hidePlayer(plugin, p);
                         }
                         plugin.invList.add(p);
                         p.sendMessage(ChatColor.GREEN + "Vanish on");
-                        Bukkit.broadcastMessage(ChatColor.GOLD + name + " left the game");
+                        Bukkit.broadcastMessage(ChatColor.YELLOW + name + " left the game");
 
 
                     }
