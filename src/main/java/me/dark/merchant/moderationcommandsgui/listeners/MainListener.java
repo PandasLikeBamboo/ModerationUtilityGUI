@@ -1,14 +1,13 @@
 package me.dark.merchant.moderationcommandsgui.listeners;
 import me.dark.merchant.moderationcommandsgui.ModerationCommandsGUI;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Server;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -47,10 +46,14 @@ public class MainListener implements Listener {
                         p.setInvulnerable(false);
                         p.sendMessage(ChatColor.RED + "God off");
                         e.getCurrentItem().removeEnchantment(Enchantment.MENDING);
+
+                        p.playNote(p.getEyeLocation(), Instrument.XYLOPHONE , Note.natural(1, Note.Tone.G));
                     }else {
                         p.setInvulnerable(true);
                         p.sendMessage(ChatColor.GREEN + "God on");
                         e.getCurrentItem().addUnsafeEnchantment(Enchantment.MENDING, 1);
+
+                        p.playNote(p.getEyeLocation(), Instrument.XYLOPHONE , Note.natural(1, Note.Tone.C));
 
                     }
                     break;
@@ -60,11 +63,14 @@ public class MainListener implements Listener {
                         p.setAllowFlight(false);
                         p.sendMessage(ChatColor.RED + "Fly off");
                         e.getCurrentItem().removeEnchantment(Enchantment.MENDING);
+
+                       p.playNote(p.getEyeLocation(), Instrument.XYLOPHONE , Note.natural(1, Note.Tone.G));
                     }else {
                         p.setAllowFlight(true);
                         p.sendMessage(ChatColor.GREEN + "Fly on");
                         e.getCurrentItem().addUnsafeEnchantment(Enchantment.MENDING, 1);
 
+                        p.playNote(p.getEyeLocation(), Instrument.XYLOPHONE , Note.natural(1, Note.Tone.C));
                     }
                     break;
                 case GHAST_TEAR:
@@ -76,7 +82,9 @@ public class MainListener implements Listener {
                         plugin.invList.remove(p);
                         p.sendMessage(ChatColor.RED + "Vanish off");
                         Bukkit.broadcastMessage(ChatColor.YELLOW + name + " joined the game");
+                        e.getCurrentItem().removeEnchantment(Enchantment.MENDING);
 
+                        p.playNote(p.getEyeLocation(), Instrument.XYLOPHONE , Note.natural(1, Note.Tone.G));
 
                     } else if(!plugin.invList.contains(p)){
 
@@ -86,8 +94,9 @@ public class MainListener implements Listener {
                         plugin.invList.add(p);
                         p.sendMessage(ChatColor.GREEN + "Vanish on");
                         Bukkit.broadcastMessage(ChatColor.YELLOW + name + " left the game");
+                        e.getCurrentItem().addUnsafeEnchantment(Enchantment.MENDING, 1);
 
-
+                        p.playNote(p.getEyeLocation(), Instrument.XYLOPHONE , Note.natural(1, Note.Tone.C));
                     }
                     break;
 

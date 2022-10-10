@@ -1,5 +1,6 @@
 package me.dark.merchant.moderationcommandsgui.GUIs;
 
+import me.dark.merchant.moderationcommandsgui.ModerationCommandsGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -16,6 +17,14 @@ import java.util.ArrayList;
 
 
 public class MainGUI implements CommandExecutor {
+
+
+    private static ModerationCommandsGUI plugin;
+
+    public static void injectPlugin(ModerationCommandsGUI p) {
+        plugin = p;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -60,7 +69,9 @@ public class MainGUI implements CommandExecutor {
             totemMeta.addEnchant(Enchantment.MENDING, 1, true);
         } else if (p.getAllowFlight()) {
             fthMeta.addEnchant(Enchantment.MENDING, 1, true);
-        }
+        } /*else if (plugin.invList.contains(p)) {
+            tearMeta.addEnchant(Enchantment.MENDING, 1 , true); //todo fix it - instantly crashes /mcg command and returns 'null'
+        }*/
 
 
 
