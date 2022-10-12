@@ -69,9 +69,12 @@ public class MainGUI implements CommandExecutor {
             totemMeta.addEnchant(Enchantment.MENDING, 1, true);
         } else if (p.getAllowFlight()) {
             fthMeta.addEnchant(Enchantment.MENDING, 1, true);
-        } /*else if (plugin.invList.contains(p)) {
-            tearMeta.addEnchant(Enchantment.MENDING, 1 , true); //todo fix it - instantly crashes /mcg command and returns 'null'
-        }*/
+        } else if (plugin.invList != null) {
+            if (plugin.invList.contains(p)) {
+                tearMeta.addEnchant(Enchantment.MENDING, 1, true); //todo doesn't give the enchantment
+            }
+        }
+
 
 
 

@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -76,8 +75,8 @@ public class MainListener implements Listener {
                 case GHAST_TEAR:
                     if(plugin.invList.contains(p)){
 
-                        for(Player people1 : Bukkit.getOnlinePlayers()){
-                            people1.showPlayer(plugin, p);
+                        for(Player people : Bukkit.getOnlinePlayers()){
+                            people.showPlayer(plugin, p);
                         }
                         plugin.invList.remove(p);
                         p.sendMessage(ChatColor.RED + "Vanish off");
@@ -88,8 +87,8 @@ public class MainListener implements Listener {
 
                     } else if(!plugin.invList.contains(p)){
 
-                        for(Player people2 : Bukkit.getOnlinePlayers()){
-                            people2.hidePlayer(plugin, p);
+                        for(Player people : Bukkit.getOnlinePlayers()){
+                            people.hidePlayer(plugin, p);
                         }
                         plugin.invList.add(p);
                         p.sendMessage(ChatColor.GREEN + "Vanish on");
