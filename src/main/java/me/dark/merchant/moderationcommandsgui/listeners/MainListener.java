@@ -6,8 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-
-import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -85,6 +83,9 @@ public class MainListener implements Listener {
 
                         p.playNote(p.getEyeLocation(), Instrument.XYLOPHONE , Note.natural(1, Note.Tone.G));
 
+                        p.removeScoreboardTag("vanished");
+
+
                     } else if(!plugin.invList.contains(p)){
 
                         for(Player people : Bukkit.getOnlinePlayers()){
@@ -96,6 +97,9 @@ public class MainListener implements Listener {
                         e.getCurrentItem().addUnsafeEnchantment(Enchantment.MENDING, 1);
 
                         p.playNote(p.getEyeLocation(), Instrument.XYLOPHONE , Note.natural(1, Note.Tone.C));
+
+                        p.addScoreboardTag("vanished");
+
                     }
                     break;
 

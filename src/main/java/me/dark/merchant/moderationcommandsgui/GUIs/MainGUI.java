@@ -4,6 +4,7 @@ import me.dark.merchant.moderationcommandsgui.ModerationCommandsGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Tag;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -60,8 +61,8 @@ public class MainGUI implements CommandExecutor {
         tpMeta.setDisplayName(ChatColor.GRAY + "Next Page");
 
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("-> teleport all to you");
-        lore.add("-> soon");
+        lore.add("> teleport all to you");
+        lore.add("> soon");
         tpMeta.setLore(lore);
 
 
@@ -69,12 +70,9 @@ public class MainGUI implements CommandExecutor {
             totemMeta.addEnchant(Enchantment.MENDING, 1, true);
         } else if (p.getAllowFlight()) {
             fthMeta.addEnchant(Enchantment.MENDING, 1, true);
-        } else if (plugin.invList != null) {
-            if (plugin.invList.contains(p)) {
-                tearMeta.addEnchant(Enchantment.MENDING, 1, true); //todo doesn't give the enchantment
-            }
+        } else if (p.getScoreboardTags().contains("vanished")) {
+            tearMeta.addEnchant(Enchantment.MENDING, 1 , true);
         }
-
 
 
 
